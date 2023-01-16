@@ -1,15 +1,15 @@
 package com.example.demo1.modal;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.mapping.IdGenerator;
+
+import javax.persistence.*;
 
 @Entity
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String code;
+    @Column(name = "ID")
+    private int code;
     private String name;
     private int age;
     private double salary;
@@ -18,7 +18,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String code, String name, int age, double salary, String branch) {
+    public Employee(int code, String name, int age, double salary, String branch) {
         this.code = code;
         this.name = name;
         this.age = age;
@@ -26,11 +26,11 @@ public class Employee {
         this.branch = branch;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
